@@ -1,0 +1,152 @@
+* {
+    font-family: "DM Sans", sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+
+/* -------------- navbar start -------------- */
+.navbar {
+    background-color: #9acd32;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5rem;
+}
+
+.navlogo {
+    display: flex;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    gap: 1rem;
+}
+
+
+/* -------------- hero start -------------- */
+.hero {
+    background-color: rgb(209, 232, 253);
+    padding: 3rem 5rem;
+    display: grid;
+    grid-template-rows: 4fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
+}
+
+.h1 {
+    display: flex;
+    align-items: center;
+
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.mainWeather {
+    background-color: rgb(255, 255, 255);
+    grid-row: span 6;
+
+    display: grid;
+    grid-template-rows: 2fr 1fr 2.5fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+
+    border-radius: 30px;
+}
+
+.img-m, .temp-m, .status-m, .hr-m, .time-m {
+    grid-column: span 2;
+}
+
+.country-m, .icon-m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+
+.country-m, .date-m, .status-m, .wind-m, .hum-m {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.temp-m {
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.date-m, .temp-m, .status-m, .wind-m, .hum-m {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.hum-m {
+    margin-bottom: 2rem;
+}
+
+/* -------------- body-hour start -------------- */
+.body-hour {
+    background-color: #9acd32;
+    padding: 2rem 5rem;
+}
+
+h2, p {
+    text-align: center;
+}
+
+p {
+    margin-bottom: 3rem;
+}
+
+.minibox-main {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.minibox {
+    background-color: blueviolet;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-column: 1fr 1fr;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 15px;
+}
+
+hr {
+    color: black;
+}
+
+
+/* -------------- body-today start -------------- */
+.body-today {
+    background-color: burlywood;
+    padding: 2rem 5rem;
+}
+
+.bigbox {
+    display: grid;
+    gap: 2rem;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bigsize {
+    grid-row: span 2;
+}
+
+.big {
+    background-color: cadetblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+
+    font-size: 30px;
+    font-weight: 400;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thunder</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navlogo">Thunder</div>
+        <ul>
+            <li>Home</li>
+            <li>News</li>
+            <li>Contact</li>
+        </ul>
+    </div>
+
+    <div class="hero">
+        <div class="h1"><h1>Daily Weather Forecast</h1></div>
+        <div class="mainWeather">
+            <div class="country-m"><%= content.sys.country %></div>
+            <div class="icon-m">icon</div>
+            <div class="date-m">Today, <%= date %></div>
+            <div class="temp-m"><%= content.main.temp %></div>
+            <div class="status-m"><%= content.weather[0].main %></div>
+            <div class="wind-m">Wind | <%= content.wind.speed %> Km/h</div>
+            <div class="hum-m">Hum | <%= content.main.humidity %>%</div>
+        </div>
+        <div class="heroP">Get the latest weather forecast for today with up-to-date<br>
+        information on temperature, precipitation, and more.</div>
+        <div class="input">
+            <form action="">
+                <input type="text" placeholder="Search for location...">
+            </form>
+        </div>
+ 
+    </div>
+
+    <div class="body-hour">
+        <h2>Hourly Update</h2>
+        <p>The 'Recent Search Weather' section displays the latest weather information for the cities you have recently
+            searched. Stay up-to-date with the weather conditions of your preferred cities with this section.</p>
+        
+        <div class="minibox-main">
+            <div class="minibox">
+                <div class="img"><img src="" alt=""></div>
+                <div class="temp"><%= hourly.list[0].main.temp %></div>
+                <div class="status"><%= hourly.list[0].weather[0].main %></div>
+                <div class="hr"><hr></div>
+                <div class="wind"><%= hourly.list[0].wind.speed %> Km/h</div>
+                <div class="hum"><%= hourly.list[0].main.humidity %>%</div>
+                <div class="time"><%= hourly.list[0].dt_txt %></div>
+            </div>
+            <div class="minibox">
+                <div class="img"><img src="" alt=""></div>
+                <div class="temp"><%= hourly.list[1].main.temp %></div>
+                <div class="status"><%= hourly.list[1].weather[0].main %></div>
+                <div class="hr"><hr></div>
+                <div class="wind"><%= hourly.list[1].wind.speed %> Km/h</div>
+                <div class="hum"><%= hourly.list[1].main.humidity %>%</div>
+                <div class="time"><%= hourly.list[1].dt_txt %></div>
+            </div>
+            <div class="minibox">
+                <div class="img"><img src="" alt=""></div>
+                <div class="temp"><%= hourly.list[2].main.temp %></div>
+                <div class="status"><%= hourly.list[2].weather[0].main %></div>
+                <div class="hr"><hr></div>
+                <div class="wind"><%= hourly.list[2].wind.speed %> Km/h</div>
+                <div class="hum"><%= hourly.list[2].main.humidity %>%</div>
+                <div class="time"><%= hourly.list[2].dt_txt %></div>
+            </div>
+            <div class="minibox">
+                <div class="img"><img src="" alt=""></div>
+                <div class="temp"><%= hourly.list[3].main.temp %></div>
+                <div class="status"><%= hourly.list[3].weather[0].main %></div>
+                <div class="hr"><hr></div>
+                <div class="wind"><%= hourly.list[3].wind.speed %> Km/h</div>
+                <div class="hum"><%= hourly.list[3].main.humidity %>%</div>
+                <div class="time"><%= hourly.list[3].dt_txt %></div>
+            </div>
+            <div class="minibox">
+                <div class="img"><img src="" alt=""></div>
+                <div class="temp"><%= hourly.list[4].main.temp %></div>
+                <div class="status"><%= hourly.list[4].weather[0].main %></div>
+                <div class="hr"><hr></div>
+                <div class="wind"><%= hourly.list[4].wind.speed %> Km/h</div>
+                <div class="hum"><%= hourly.list[4].main.humidity %>%</div>
+                <div class="time"><%= hourly.list[4].dt_txt %></div>
+            </div>
+            <div class="minibox">
+                <div class="img"><img src="" alt=""></div>
+                <div class="temp"><%= hourly.list[5].main.temp %></div>
+                <div class="status"><%= hourly.list[5].weather[0].main %></div>
+                <div class="hr"><hr></div>
+                <div class="wind"><%= hourly.list[5].wind.speed %> Km/h</div>
+                <div class="hum"><%= hourly.list[5].main.humidity %>%</div>
+                <div class="time"><%= hourly.list[5].dt_txt %></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="body-today">
+        <h2>Today Weather Details</h2>
+        <p>The 'Recent Search Weather' section displays the latest weather information for the cities you have recently
+            searched. Stay up-to-date with the weather conditions of your preferred cities with this section.</p>
+
+        <div class="bigbox">
+            <div class="mainWeather bigsize">
+                <div class="country-m"><%= content.sys.country %></div>
+                <div class="icon-m">icon</div>
+                <div class="date-m">Today, <%= date %></div>
+                <div class="temp-m"><%= content.main.temp %></div>
+                <div class="status-m"><%= content.weather[0].main %></div>
+                <div class="wind-m">Wind | <%= content.wind.speed %> Km/h</div>
+                <div class="hum-m">Hum | <%= content.main.humidity %>%</div>
+            </div>
+
+            <div class="big-wind big">Wind <%= content.wind.speed %> Km/h</div>
+            <div class="visibility big">Visibility <%= content.visibility/1000 %> Km</div>
+            <div class="big-hum big" >Humidity <%= content.main.humidity %>%</div>
+            <div class="daytime big">Sunrise <%= sunTime.sunrise %> Sunset <%= sunTime.sunset %></div>
+        </div>
+    </div>
+    
+</body>
+</html>

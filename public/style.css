@@ -8,51 +8,106 @@ body {
 
 
 /* -------------- navbar start -------------- */
-.navbar {
-    background-color: #9acd32;
+.primary-header {
+    position: sticky;
+    top: 0;
+
+    padding: 1rem 5rem;
+    background-color: rgb(249, 249, 249);
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
+}
+
+.primary-header__inner {
     display: flex;
     justify-content: space-between;
-    padding: 0 5rem;
+
+    color: #252222;
 }
 
-.navlogo {
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
     display: flex;
     align-items: center;
+    gap: clamp(0.5rem, 5vw, 2rem);
 }
 
-ul {
-    display: flex;
-    list-style-type: none;
-    gap: 1rem;
+.logo {
+    font-size: 1.6rem;
+    font-weight: 900;
+}
+
+.nav-list li {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 
 /* -------------- hero start -------------- */
 .hero {
-    background-color: rgb(209, 232, 253);
+    /* background-color: rgb(209, 232, 253); */
+    background-image: url("./assets/hero-background.jpg");
+    background-position: center;
+    background-size: cover;
+
     padding: 3rem 5rem;
     display: grid;
-    grid-template-rows: 4fr 1fr 1fr;
+    grid-template-rows: 3fr 1fr 1fr;
     grid-template-columns: 2fr 1fr;
 }
 
+.overlay {
+    border-image-source: linear-gradient(rgba(255, 255, 255, 0.33));
+    border-image-slice: fill 1;
+}
+
 .h1 {
+    color: #252222;
     display: flex;
-    align-items: center;
+    align-items: end;
 
     font-size: 40px;
     font-weight: 100;
+
+    /* padding-bottom: 1rem; */
+}
+
+.heroP {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+p {
+    font-size: 18px;
+    color: #898e8f;
+}
+
+h2, p {
+    text-align: center;
 }
 
 .mainWeather {
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.758);
     grid-row: span 6;
 
     display: grid;
     grid-template-rows: 2fr 1fr 2.5fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
 
     border-radius: 30px;
+}
+
+.hero .mainWeather {
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
+}
+
+.icon-m > img {
+    filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.2));
 }
 
 .img-m, .temp-m, .status-m, .hr-m, .time-m {
@@ -63,17 +118,18 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem;
+    margin: 1rem;
 }
 
 .country-m, .date-m, .status-m, .wind-m, .hum-m {
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .temp-m {
     font-size: 60px;
-    font-weight: 600;
+    font-weight: 500;
+    padding-left: 2rem;
 }
 
 .date-m, .temp-m, .status-m, .wind-m, .hum-m {
@@ -88,14 +144,19 @@ ul {
     margin-bottom: 2rem;
 }
 
-/* -------------- body-hour start -------------- */
-.body-hour {
-    background-color: #9acd32;
-    padding: 2rem 5rem;
+input {
+    border: none;
+    background: #f2f2f2;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
+    padding: 12px;
+    border-radius: 4px;
+    width: 60%;
+    outline: none;
 }
 
-h2, p {
-    text-align: center;
+/* -------------- body-hour start -------------- */
+.body-hour {
+    padding: 2rem 5rem 4rem 5rem;
 }
 
 p {
@@ -106,27 +167,47 @@ p {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
+    font-weight: 400;
 }
 
 .minibox {
-    background-color: blueviolet;
+    background-color: #f3f7ff;
     display: grid;
-    grid-template-rows: repeat(5, 1fr);
-    grid-column: 1fr 1fr;
+    grid-template-rows: repeat(5, auto);
+    grid-column: 1fr;
     padding: 2rem;
     text-align: center;
     border-radius: 15px;
+
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.minibox > .img > img {
+    filter: drop-shadow(0px 0px 8px rgba(0,0,0,0.2));
+}
+
+.minibox > .temp {
+    font-size: 1.5rem;
+}
+
+.temp, .status, .wind, .hum, .time {
+    margin-bottom: 0.25rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 hr {
-    color: black;
+    padding: 0;
+    margin: 1rem;
 }
 
 
 /* -------------- body-today start -------------- */
 .body-today {
-    background-color: burlywood;
-    padding: 2rem 5rem;
+    background-color: #f0f5ff;
+    padding: 2rem 5rem 4rem 5rem;
 }
 
 .bigbox {
@@ -138,15 +219,26 @@ hr {
 
 .bigsize {
     grid-row: span 2;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .big {
-    background-color: cadetblue;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 30px;
 
     font-size: 30px;
     font-weight: 400;
+}
+
+.big > img {
+    margin-bottom: 1rem;
+    height: 3rem;
 }

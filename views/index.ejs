@@ -13,22 +13,27 @@
 </head>
 <body>
 
-    <div class="navbar">
-        <div class="navlogo">Thunder</div>
-        <ul>
-            <li>Home</li>
-            <li>News</li>
-            <li>Contact</li>
-        </ul>
-    </div>
+    <header class="primary-header">
+        <div class="wrapper">
+            <div class="primary-header__inner">
+                <span class="logo">Thunder</span>
+                <ul class="nav-list">
+                    <li>Home</li>
+                    <li>News</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+        </div>
+    </header>
 
-    <div class="hero">
-        <div class="h1"><h1>Daily Weather Forecast</h1></div>
+    <div class="hero overlay">
+        <div class="h1"><h1>Daily Weather Forecast Update News</h1></div>
         <div class="mainWeather">
-            <div class="country-m"><%= content.sys.country %></div>
-            <div class="icon-m">icon</div>
+            <div class="country-m"><%= content.name %></div>
+            <div class="icon-m"><img src="assets/weathericons/<%= `${content.weather[0].icon}` %>.png" alt=""></div>
             <div class="date-m">Today, <%= date %></div>
-            <div class="temp-m"><%= content.main.temp %></div>
+            <div class="temp-m"><%= content.main.temp %><sup><sup><sup><sup> o</sup>C</sup>
+            </sup></sup></div>
             <div class="status-m"><%= content.weather[0].main %></div>
             <div class="wind-m">Wind | <%= content.wind.speed %> Km/h</div>
             <div class="hum-m">Hum | <%= content.main.humidity %>%</div>
@@ -50,7 +55,7 @@
         
         <div class="minibox-main">
             <div class="minibox">
-                <div class="img"><img src="" alt=""></div>
+                <div class="img"><img src="assets/weathericons/<%= `${hourly.list[0].weather[0].icon}` %>.png" alt=""></div>
                 <div class="temp"><%= hourly.list[0].main.temp %></div>
                 <div class="status"><%= hourly.list[0].weather[0].main %></div>
                 <div class="hr"><hr></div>
@@ -59,7 +64,7 @@
                 <div class="time"><%= hourly.list[0].dt_txt %></div>
             </div>
             <div class="minibox">
-                <div class="img"><img src="" alt=""></div>
+                <div class="img"><img src="assets/weathericons/<%= `${hourly.list[1].weather[0].icon}` %>.png" alt=""></div>
                 <div class="temp"><%= hourly.list[1].main.temp %></div>
                 <div class="status"><%= hourly.list[1].weather[0].main %></div>
                 <div class="hr"><hr></div>
@@ -68,7 +73,7 @@
                 <div class="time"><%= hourly.list[1].dt_txt %></div>
             </div>
             <div class="minibox">
-                <div class="img"><img src="" alt=""></div>
+                <div class="img"><img src="assets/weathericons/<%= `${hourly.list[2].weather[0].icon}` %>.png" alt=""></div>
                 <div class="temp"><%= hourly.list[2].main.temp %></div>
                 <div class="status"><%= hourly.list[2].weather[0].main %></div>
                 <div class="hr"><hr></div>
@@ -77,7 +82,7 @@
                 <div class="time"><%= hourly.list[2].dt_txt %></div>
             </div>
             <div class="minibox">
-                <div class="img"><img src="" alt=""></div>
+                <div class="img"><img src="assets/weathericons/<%= `${hourly.list[3].weather[0].icon}` %>.png" alt=""></div>
                 <div class="temp"><%= hourly.list[3].main.temp %></div>
                 <div class="status"><%= hourly.list[3].weather[0].main %></div>
                 <div class="hr"><hr></div>
@@ -86,7 +91,7 @@
                 <div class="time"><%= hourly.list[3].dt_txt %></div>
             </div>
             <div class="minibox">
-                <div class="img"><img src="" alt=""></div>
+                <div class="img"><img src="assets/weathericons/<%= `${hourly.list[4].weather[0].icon}` %>.png" alt=""></div>
                 <div class="temp"><%= hourly.list[4].main.temp %></div>
                 <div class="status"><%= hourly.list[4].weather[0].main %></div>
                 <div class="hr"><hr></div>
@@ -95,7 +100,7 @@
                 <div class="time"><%= hourly.list[4].dt_txt %></div>
             </div>
             <div class="minibox">
-                <div class="img"><img src="" alt=""></div>
+                <div class="img"><img src="assets/weathericons/<%= `${hourly.list[5].weather[0].icon}` %>.png" alt=""></div>
                 <div class="temp"><%= hourly.list[5].main.temp %></div>
                 <div class="status"><%= hourly.list[5].weather[0].main %></div>
                 <div class="hr"><hr></div>
@@ -113,19 +118,32 @@
 
         <div class="bigbox">
             <div class="mainWeather bigsize">
-                <div class="country-m"><%= content.sys.country %></div>
-                <div class="icon-m">icon</div>
+                <div class="country-m"><%= content.name %></div>
+                <div class="icon-m"><img src="assets/weathericons/<%= `${content.weather[0].icon}` %>.png" alt=""></div>
                 <div class="date-m">Today, <%= date %></div>
-                <div class="temp-m"><%= content.main.temp %></div>
+                <div class="temp-m"><%= content.main.temp %><sup><sup><sup><sup> o</sup>C</sup>
+                </sup></sup></div>
                 <div class="status-m"><%= content.weather[0].main %></div>
                 <div class="wind-m">Wind | <%= content.wind.speed %> Km/h</div>
                 <div class="hum-m">Hum | <%= content.main.humidity %>%</div>
             </div>
 
-            <div class="big-wind big">Wind <%= content.wind.speed %> Km/h</div>
-            <div class="visibility big">Visibility <%= content.visibility/1000 %> Km</div>
-            <div class="big-hum big" >Humidity <%= content.main.humidity %>%</div>
-            <div class="daytime big">Sunrise <%= sunTime.sunrise %> Sunset <%= sunTime.sunset %></div>
+            <div class="big-wind big">
+                <img src="assets/weathericons/strong-wind.svg" alt="">
+                <div class="data">Wind <%= content.wind.speed %> Km/h</div>
+            </div>
+            <div class="visibility big">
+                <img src="assets/weathericons/eye.svg" alt="">
+                <div class="data">Visibility <%= content.visibility/1000 %> Km</div>
+            </div>
+            <div class="big-hum big" >
+                <img src="assets/weathericons/water-liquid.svg" alt="">
+                <div class="data">Humidity <%= content.main.humidity %>%</div>
+            </div>
+            <div class="daytime big">
+                <img src="assets/weathericons/sunrise.svg" alt="">
+                <div class="data">Sunrise <%= sunTime.sunrise %> - Sunset <%= sunTime.sunset %></div>
+            </div>
         </div>
     </div>
     

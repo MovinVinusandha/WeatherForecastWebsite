@@ -54,7 +54,7 @@ body {
 
     padding: 3rem 5rem;
     display: grid;
-    grid-template-rows: 3fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr auto;
     grid-template-columns: 2fr 1fr;
 }
 
@@ -144,15 +144,80 @@ h2, p {
     margin-bottom: 2rem;
 }
 
-input {
+.search-box {
     border: none;
-    background: #f2f2f2;
+    background: #ffffff;
     box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
-    padding: 12px;
     border-radius: 4px;
     width: 60%;
     outline: none;
 }
+
+.row form {
+    display: flex;
+    flex: 1;
+    border-radius: 4px;
+}
+
+.row .text {
+    flex: 1;
+    padding: 20px;
+    background-color: #e7e6e6;
+    border: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+.row button {
+    border: none;
+    padding: 0 10px;
+    border-radius: 0 4px 4px 0;
+    background-color: #cecece;
+}
+
+.result-box {
+    max-height: 200px;
+    /* overflow-y: scroll; */
+    padding: 0;
+    margin: 0;
+}
+
+.result-box ul {
+    padding: 0;
+}
+
+.result-box ul li {
+    cursor: pointer;
+    list-style: none;
+    padding: 10px 0px;
+}
+
+.result-box ul li:hover {
+    border: 0;
+    background-color: #f2f2f2;
+    height: auto;
+}
+
+.search-list li {
+    padding: 0;
+}
+
+.search-list form {
+    display: flex;
+    flex: 1;
+    padding: 0;
+}
+
+.search-list input {
+    cursor: pointer;
+}
+
+.search-list button {
+    background: transparent;
+    padding: 0 20px;
+    border: 0;
+    
+}
+
 
 /* -------------- body-hour start -------------- */
 .body-hour {

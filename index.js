@@ -1,12 +1,10 @@
 import express from "express";
 import axios from "axios";
-// import bodyParser from "body-parser";
+import bodyParser from "body-parser";
 
 
 const app = express();
 const port = 3000;
-const lat = 6.235062;
-const lon = 80.052930;
 const appid = "ee3afac96399903db306493fb534dca2";
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -16,7 +14,16 @@ const today = date.getDate() + " " + monthNames[date.getMonth()];
 
 
 app.use(express.static("public"));
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+let lat = 6.235062;
+let lon = 80.052930;
+
+let response1 = '';
+let response2 = '';
+let response3 = '';
+let sunTime = '';
 
 
 function unixTimeConvert(timestamp){
@@ -30,16 +37,16 @@ function unixTimeConvert(timestamp){
 }
 
 
-// current weather forcast
+// current weather forcast defalt location
 app.get("/", async (req, res) => {
     const URL1 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appid}&units=metric`;
     const URL2 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${appid}&units=metric&cnt=6`;
     try{
-        const response1 = await axios.post(URL1);
-        const response2 = await axios.post(URL2);
+        response1 = await axios.post(URL1);
+        response2 = await axios.post(URL2);
 
 
-        const sunTime = {
+        sunTime = {
             sunrise: unixTimeConvert(response1.data.sys.sunrise),
             sunset: unixTimeConvert(response1.data.sys.sunset)
         }
@@ -55,9 +62,45 @@ app.get("/", async (req, res) => {
         
     }
     catch (error) {
-        res.render("index.ejs", { content: JSON.stringify(error.response1.data), hourly: JSON.stringify(error.hourly.data) });
+        res.render("index.ejs", { content: JSON.stringify(error.response1), hourly: JSON.stringify(error.hourly) });
     }
 
+});
+
+
+// find specific location weather forcast
+app.post("/find", async (req, res) => {
+    let request = req.body.city
+    const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${request}&limit=4&appid=${appid}`;
+    
+    try{
+        response3 = await axios.get(URL);
+        const Data = response3.data;
+
+        console.log("list data hhhhhhhhh :", Data);
+        
+        res.render("index.ejs", {
+            content: response1.data,
+            hourly: response2.data,
+            sunTime: sunTime,
+            date: today,
+
+            citys: Data,
+        });
+    
+    }catch (err){
+        console.log(err);
+    };
+
+});
+
+
+app.post("/coordinate", async (req, res) => {
+
+    lat = req.body.lat;
+    lon = req.body.lon;
+
+    res.redirect("/");
 });
 
 

@@ -40,10 +40,37 @@
         </div>
         <div class="heroP">Get the latest weather forecast for today with up-to-date<br>
         information on temperature, precipitation, and more.</div>
-        <div class="input">
-            <form action="">
-                <input type="text" placeholder="Search for location...">
-            </form>
+        
+        
+        <div class="search-box">
+            <div class="row">
+                <form action="/find" method="post">
+                    <input class="text" type="text" placeholder="Search for location ..." name="city">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            <% if (locals.citys) { %>
+                <div class="result-box">
+                    <ul class="search-list">                    
+                        <% for(let i=0; i < citys.length; i++){ %>        
+                            <li>
+
+                                <form action="/coordinate" method="post">
+                                    <input type="hidden" name="lat" value="<%= citys[i].lat %>">
+                                    <input type="hidden" name="lon" value="<%= citys[i].lon %>">
+                                    
+                                    <button type="submit">
+                                        <%= citys[i].name %>, <%= citys[i].state %>, <%= citys[i].country %>
+                                    </button>
+                                </form>
+                                
+                            </li>
+
+                        <% } %>
+                    </ul>
+                </div>
+            <% } %>
         </div>
  
     </div>

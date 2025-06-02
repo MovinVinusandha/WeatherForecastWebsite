@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
@@ -5,7 +6,7 @@ import bodyParser from "body-parser";
 
 const app = express();
 const port = 3000;
-const appid = "ee3afac96399903db306493fb534dca2";
+const appid = process.env.APPID;
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -71,25 +72,31 @@ app.get("/", async (req, res) => {
 // find specific location weather forcast
 app.post("/find", async (req, res) => {
     let request = req.body.city
-    const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${request}&limit=4&appid=${appid}`;
-    
-    try{
-        response3 = await axios.get(URL);
-        const Data = response3.data;
 
-        console.log("list data hhhhhhhhh :", Data);
+    if (request){
+        const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${request}&limit=4&appid=${appid}`;
         
-        res.render("index.ejs", {
+        try{
+            response3 = await axios.get(URL);
+            const Data = response3.data;
+
+
+            res.render("index.ejs", {
             content: response1.data,
             hourly: response2.data,
             sunTime: sunTime,
             date: today,
 
             citys: Data,
-        });
-    
-    }catch (err){
-        console.log(err);
+            });
+
+        
+        }catch (err){
+            console.log(err);
+        };
+
+    }else{
+        res.redirect("/");
     };
 
 });

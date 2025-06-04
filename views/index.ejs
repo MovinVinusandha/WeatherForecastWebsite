@@ -27,15 +27,12 @@
     </header>
 
     <div class="hero overlay" style="background-image: url('/assets/hero-background/<%= content.weather[0].icon %>.jpg');">
-
-        
         <div class="h1"><h1>Daily Weather Forecast Update News</h1></div>
         <div class="mainWeather">
-            <div class="country-m"><%= content.name %></div>
+            <div class="country-m"><%= content.name %>, <%= content.sys.country %></div>
             <div class="icon-m"><img src="assets/weathericons/<%= `${content.weather[0].icon}` %>.png" alt=""></div>
             <div class="date-m">Today, <%= date %></div>
-            <div class="temp-m"><%= content.main.temp %><sup><sup><sup><sup> o</sup>C</sup>
-            </sup></sup></div>
+            <div class="temp-m"><%= content.main.temp %><sup><sup><sup><sup> o</sup>C</sup></sup></sup></div>
             <div class="status-m"><%= content.weather[0].main %></div>
             <div class="wind-m">Wind | <%= content.wind.speed %> Km/h</div>
             <div class="hum-m">Hum | <%= content.main.humidity %>%</div>
@@ -147,7 +144,7 @@
 
         <div class="bigbox">
             <div class="mainWeather bigsize">
-                <div class="country-m"><%= content.name %></div>
+                <div class="country-m"><%= content.name %>, <%= content.sys.country %></div>
                 <div class="icon-m"><img src="assets/weathericons/<%= `${content.weather[0].icon}` %>.png" alt=""></div>
                 <div class="date-m">Today, <%= date %></div>
                 <div class="temp-m"><%= content.main.temp %><sup><sup><sup><sup> o</sup>C</sup>

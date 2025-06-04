@@ -47,8 +47,6 @@ body {
 
 /* -------------- hero start -------------- */
 .hero {
-    /* background-color: rgb(209, 232, 253); */
-    background-image: url("./assets/hero-background.jpg");
     background-position: center;
     background-size: cover;
 

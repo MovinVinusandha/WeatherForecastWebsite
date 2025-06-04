@@ -51,7 +51,7 @@ app.get("/", async (req, res) => {
             sunrise: unixTimeConvert(response1.data.sys.sunrise),
             sunset: unixTimeConvert(response1.data.sys.sunset)
         }
-        console.log("sun time:",sunTime);
+        
         
 
         res.render("index.ejs", {
